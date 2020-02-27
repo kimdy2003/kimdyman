@@ -1,9 +1,10 @@
 import asyncio
 import discord
+import os
 from discord.ext import commands
 
 client = commands.Bot(command_prefix='-')
-token = "NjgyNDMzNzI0NDk0Nzc0Mjkz.Xlc8DQ.vWFu4msU46WZKnxvlSCh4FJV3Mc"
+access_token = os.environ["NjgyNDMzNzI0NDk0Nzc0Mjkz.Xlc8DQ.vWFu4msU46WZKnxvlSCh4FJV3Mc"]
 
 @client.event
 async def on_ready () : # 항상
@@ -18,4 +19,5 @@ async def on_message(message) :
         author = message.guild.get_member(337849294591885322)
         await author.send(msg)
         await message.channel.send("해당 사항이 전달되었습니다.")
-client.run(token)
+      
+client.run(access_token)
