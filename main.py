@@ -4,7 +4,7 @@ import os
 from discord.ext import commands
 
 client = commands.Bot(command_prefix='-')
-access_token = os.environ["NjgyNDMzNzI0NDk0Nzc0Mjkz.Xlc8DQ.vWFu4msU46WZKnxvlSCh4FJV3Mc"]
+access_token = os.environ["BOT_TOKEN"]
 
 @client.event
 async def on_ready () : # 항상
