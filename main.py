@@ -9,7 +9,7 @@ access_token = os.environ["BOT_TOKEN"]
 @client.event
 async def on_ready () : # 항상
       print(client.user.name,"실행중")
-      activity = discord.Game(name="저에게 문의내용을 보내주세요!!")
+      activity = discord.Game(name="DM으로 문의주세요.")
       await client.change_presence(status=discord.Status.online, activity=activity) # idle = 자리비움
 
 contents = ""
