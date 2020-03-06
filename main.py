@@ -1,7 +1,6 @@
 import asyncio
 import discord
 import os
-import sheet
 from discord.ext import commands
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
