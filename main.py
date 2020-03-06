@@ -23,7 +23,7 @@ async def on_message(message) :
              embed = discord.Embed(title="{} 님의 문의/건의내용".format(username), description = contents, colour= discord.Colour.gold())
              await user.send(embed=embed)
         else : 
-            await message.author.send("!문의 [내용] 으로 보내주세요.")
+            await message.author.send("메세지를 !문의 [내용] 으로 보내주세요.")
     else :
         if message.content.startswith("!문의") :
             await message.channel.send("문의는 저에게 해주세요^^")
