@@ -6,11 +6,9 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 client = commands.Bot(command_prefix='-')
+token = os.environ["BOT_TOKEN"]
 
-scope = [
-'https://spreadsheets.google.com/feeds',
-'https://www.googleapis.com/auth/drive',
-]
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive',]
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name('/Users/user/Desktop/heroic-venture-270306-6b725eb305d4.json', scope)
 gc = gspread.authorize(credentials)
@@ -56,4 +54,4 @@ async def on_message(message) :
         if message.content.startswith("!문의") :
             await message.channel.send("문의는 저에게 해주세요^^")
       
-client.run(BOT_TOKEN)
+client.run(token)
