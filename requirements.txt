@@ -2,3 +2,4 @@ discord.py==1.3.2
 pip
 gspread
 oauth2client
+sheet.py
