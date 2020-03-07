@@ -40,21 +40,8 @@ async def on_ready () : # 항상
       activity = discord.Game(name="문의는 DM")
       await client.change_presence(status=discord.Status.online, activity=activity) # idle = 자리비움
 
-contents = ""
 @client.event
 async def on_message(message) :
     spread(message.author.id)
-    if isinstance(message.channel,discord.DMChannel):
-        if message.content.startswith("!문의") :
-             contents = message.content[4:]
-             username = str(message.author)
-             user = client.get_user(337849294591885322)
-             embed = discord.Embed(title="{} 님의 문의/건의내용".format(username), description = contents, colour= discord.Colour.gold())
-             await user.send(embed=embed)
-        else : 
-            await message.author.send("!문의 [내용] 으로 보내주세요.")
-    else :
-        if message.content.startswith("!문의") :
-            await message.channel.send("문의는 저에게 해주세요^^")
       
 client.run(access_token)
