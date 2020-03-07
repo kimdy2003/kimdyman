@@ -1,6 +1,8 @@
 import asyncio
 import discord
 import os
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 from discord.ext import commands
 
 client = commands.Bot(command_prefix='-')
