@@ -4,7 +4,7 @@ import os
 from discord.ext import commands
 
 client = commands.Bot(command_prefix='-')
-access_token = os.environ['BOT_TOKEN']
+token = os.environ['BOT_TOKEN']
 
 @client.event
 async def on_ready () : # 항상
@@ -28,4 +28,4 @@ async def on_message(message) :
         if message.content.startswith("!문의") :
             await message.channel.send("문의는 저에게 해주세요^^")
       
-client.run(access_token)
+client.run(token)
