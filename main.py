@@ -30,8 +30,7 @@ def spread(id) :
                 date = str(data)
                 worksheet.update_acell(temp, date)
     else : 
-        worksheet.update_acell("A{}".format(len(userID)+2), "{}".format(id))
-        worksheet.update_acell("B{}".format(len(userID)+2), "1")
+        worksheet.insert_row(['{}'.format(id), '1'], len(userID)+1)
       
 @client.event
 async def on_ready () : # 항상
