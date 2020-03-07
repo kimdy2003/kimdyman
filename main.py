@@ -6,7 +6,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 client = commands.Bot(command_prefix='-')
-access_token = os.environ["BOT_TOKEN"]
+access_token = 'NjgyNDMzNzI0NDk0Nzc0Mjkz.XleKrQ.AcfWIee5DpHbVsi7LNoBc5JUB-8'
 
 scope = [
 'https://spreadsheets.google.com/feeds',
