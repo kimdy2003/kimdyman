@@ -42,6 +42,7 @@ contents = ""
 @client.event
 async def on_message(message) :
     spread(message.author.id)
+    userID = worksheet.col_values(1)
     if isinstance(message.channel,discord.DMChannel):
         if message.content.startswith("!문의") :
              contents = message.content[4:]
