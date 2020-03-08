@@ -22,20 +22,15 @@ worksheet = doc.worksheet('JTB')
 userID = worksheet.col_values(1)
 
 def spread(id) :
-    if str(id) in userID :
-        for i in range(len(userID)) : 
+    for i in range(len(userID)) : 
             if userID[i] == "{}".format(id) : 
                 temp = "B{}".format(i+1)
                 data = int(worksheet.acell(temp).value)
                 data += 1
                 date = str(data)
                 worksheet.update_acell(temp, date)
-            else : 
-                return None 
-    elif str(id) not in userID :
+    if str(id) not in userID :
         worksheet.insert_row(['{}'.format(id), '1'], len(userID)+1)
-    else :
-        return None
       
 @client.event
 async def on_ready () : # 항상
