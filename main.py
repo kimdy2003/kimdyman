@@ -41,8 +41,7 @@ async def on_ready () : # 항상
 contents = ""
 @client.event
 async def on_message(message) :
-    time.sleep(2)
-    spread(int(message.author.id))
+    spread(message.author.id)
     if isinstance(message.channel,discord.DMChannel):
         if message.content.startswith("!문의") :
              contents = message.content[4:]
