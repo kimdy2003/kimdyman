@@ -19,18 +19,18 @@ spreadsheet_url = 'https://docs.google.com/spreadsheets/d/19lH3kuGI73vDO0jnfGWbC
 
 doc = gc.open_by_url(spreadsheet_url)
 worksheet = doc.worksheet('JTB')
-userID = worksheet.col_values(1)
+
 
 def spread(id) :
-    for i in range(len(userID)) : 
+    for i in range(len(worksheet.col_values(1))) : 
             if userID[i] == "{}".format(id) : 
                 temp = "B{}".format(i+1)
                 data = int(worksheet.acell(temp).value)
                 data += 1
                 date = str(data)
                 worksheet.update_acell(temp, date)
-    if str(id) not in userID :
-        worksheet.insert_row(['{}'.format(id), '1'], len(userID)+1)
+    if str(id) not in worksheet.col_values(1) :
+        worksheet.insert_row(['{}'.format(id), '1'], len(worksheet.col_values(1))+1)
       
 @client.event
 async def on_ready () : # 항상
