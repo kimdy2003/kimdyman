@@ -22,7 +22,7 @@ worksheet = doc.worksheet('JTB')
 userID = worksheet.col_values(1)
 
 def spread(id) :
-    if "{}".format(id) in userID :
+    if str(id) in userID :
         for i in range(len(userID)) : 
             if userID[i] == "{}".format(id) : 
                 temp = "B{}".format(i+1)
@@ -30,8 +30,12 @@ def spread(id) :
                 data += 1
                 date = str(data)
                 worksheet.update_acell(temp, date)
-    elif "{}".format(id) not in userID :
+            else : 
+                return None 
+    elif str(id) not in userID :
         worksheet.insert_row(['{}'.format(id), '1'], len(userID)+1)
+    else :
+        return None
       
 @client.event
 async def on_ready () : # 항상
@@ -52,7 +56,7 @@ async def on_message(message) :
              embed = discord.Embed(title="{} 님의 문의/건의내용".format(username), description = contents, colour= discord.Colour.gold())
              await user.send(embed=embed)
         else : 
-            await message.author.send("!문의 [내용] 으로 보내주세요.")
+            await message.author.send("메세지를 !문의 [내용] 으로 보내주세요.")
     else :
         if message.content.startswith("!문의") :
             await message.channel.send("문의는 저에게 해주세요^^")
