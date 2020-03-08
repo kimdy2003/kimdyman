@@ -29,7 +29,7 @@ def spread(id) :
                 data += 1
                 date = str(data)
                 worksheet.update_acell(temp, date)
-    else : 
+    elif "{}".format(id) not in userID :
         worksheet.insert_row(['{}'.format(id), '1'], len(userID)+1)
       
 @client.event
