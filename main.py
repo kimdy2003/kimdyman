@@ -51,8 +51,6 @@ async def on_message(message) :
              user = client.get_user(337849294591885322)
              embed = discord.Embed(title="{} 님의 문의/건의내용".format(username), description = contents, colour= discord.Colour.gold())
              await user.send(embed=embed)
-        elif message.content.startswith("@asdfasdfasdf") :
-            await message.author.send ("ON")
         else : 
             await message.author.send("메세지를 !문의 [내용] 으로 보내주세요.")
     else :
