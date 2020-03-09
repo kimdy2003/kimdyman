@@ -19,9 +19,6 @@ spreadsheet_url = 'https://docs.google.com/spreadsheets/d/19lH3kuGI73vDO0jnfGWbC
 
 doc = gc.open_by_url(spreadsheet_url)
 worksheet = doc.worksheet('JTB')
-
-
-
     
 def spread(id) :
     userID = worksheet.col_values(1)
@@ -40,6 +37,9 @@ async def on_ready () : # 항상
       print(client.user.name,"실행중")
       activity = discord.Game(name="문의는 DM")
       await client.change_presence(status=discord.Status.online, activity=activity) # idle = 자리비움
+       while True :
+        time.sleep(300)
+        print(True)
 
 contents = ""
 @client.event
@@ -58,9 +58,5 @@ async def on_message(message) :
     else :
         if message.content.startswith("!문의") :
             await message.channel.send("문의는 저에게 해주세요^^")
-
-while True :
-    time.sleep(300)
-    print(True)
     
 client.run(token)
