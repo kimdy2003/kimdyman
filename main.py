@@ -21,6 +21,11 @@ doc = gc.open_by_url(spreadsheet_url)
 worksheet = doc.worksheet('JTB')
 
 
+
+while True :
+    time.sleep(300)
+    print(True)
+    
 def spread(id) :
     userID = worksheet.col_values(1)
     for i in range(len(userID)) : 
