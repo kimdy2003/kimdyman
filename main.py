@@ -37,7 +37,7 @@ async def on_ready () : # 항상
       print(client.user.name,"실행중")
       activity = discord.Game(name="문의는 DM")
       await client.change_presence(status=discord.Status.online, activity=activity) # idle = 자리비움
-       while True :
+      while True :
         time.sleep(300)
         print(True)
 
