@@ -53,7 +53,7 @@ async def on_message(message) :
             await message.author.send ("ON")
             while True :
                 time.sleep(300)
-                print(True)
+                await message.client.send("-")
         else : 
             await message.author.send("메세지를 !문의 [내용] 으로 보내주세요.")
     else :
