@@ -20,8 +20,7 @@ spreadsheet_url = 'https://docs.google.com/spreadsheets/d/19lH3kuGI73vDO0jnfGWbC
 doc = gc.open_by_url(spreadsheet_url)
 worksheet = doc.worksheet('JTB')
 
-while True :
-    print(True)
+
     
 def spread(id) :
     userID = worksheet.col_values(1)
