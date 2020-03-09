@@ -1,1 +1,1 @@
-worker: test.html
+worker: python main.py
