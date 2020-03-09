@@ -22,9 +22,6 @@ worksheet = doc.worksheet('JTB')
 
 
 
-while True :
-    time.sleep(300)
-    print(True)
     
 def spread(id) :
     userID = worksheet.col_values(1)
@@ -61,5 +58,9 @@ async def on_message(message) :
     else :
         if message.content.startswith("!문의") :
             await message.channel.send("문의는 저에게 해주세요^^")
-      
+
+while True :
+    time.sleep(300)
+    print(True)
+    
 client.run(token)
