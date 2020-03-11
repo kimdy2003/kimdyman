@@ -59,5 +59,5 @@ async def on_message(message) :
         await message.author.send(embed=embed)
         embed2 = discord.Embed(title = '{}님으로부터의 문의/건의 내용'.format(username), description = '{}'.format(contents))
         await user.send(embed=embed2)
-    await bot.process_commands(message)
+    await client.process_commands(message)
 client.run(token)
