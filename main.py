@@ -43,7 +43,7 @@ async def on_ready () : # 항상
 @client.command(pass_context=True)
 async def 문의봇 (ctx, *args) : 
     if len(args) == 0 :
-        await ctx.send ("```css\n[!문의봇 업데이트] : 업데이트 내역을 확인할 수 있습니다.\n[!문의 <문의내용>] : (Only DM) 문의/건의를 보낼 수 있습니다.\n[!통계자료확인] : 공사중..```")              
+        await ctx.send ("```css\n[!문의봇 업데이트] : 업데이트 내역을 확인할 수 있습니다.\n[#문의 <문의내용>] : (Only DM) 문의/건의를 보낼 수 있습니다.\n[!통계자료확인] : 공사중..```")              
     elif args[0] == '업데이트' :
         await ctx.send ("```cs\n2020년 3월 11일 업데이트 내역 (0.1)\n#1 '이번이 첫 릴리즈라서 업데이트가 아님'```")
         
