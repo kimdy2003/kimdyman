@@ -42,7 +42,7 @@ async def on_ready () : # 항상
 contents = ""
 @client.event
 async def on_message(message) :
-    spread(message.author.id)
+    spread(int(message.author.id))
     if message.content.startswith ("!문의") :
         user = client.get_user(message.author.id)
         await user.send ("현재 사용할 수 없는 기능입니다.")
