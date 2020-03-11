@@ -7,7 +7,7 @@ import json
 from oauth2client.service_account import ServiceAccountCredentials
 from discord.ext import commands
 
-client = commands.Bot(command_prefix='$')
+client = commands.Bot(command_prefix='!')
 token = os.environ['BOT_TOKEN']
 scope = [
 'https://spreadsheets.google.com/feeds',
