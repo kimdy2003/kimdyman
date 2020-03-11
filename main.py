@@ -45,5 +45,6 @@ contents = ""
 async def on_message(message) :
     spread(message.author.id)
     if message.content.startswith ("!문의") :
-        await message.author.send ("현재 오류로 인하여 사용할 수 없습니다.")
+        user = client.get_user(message.author.id)
+        await user.send ("현재 사용할 수 없는 기능입니다.")
 client.run(token)
