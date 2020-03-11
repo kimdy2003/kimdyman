@@ -55,7 +55,7 @@ contents = ""
 @client.event
 async def on_message(message) :
     spread(int(message.author.id))
-    if message.content.startswith("!문의") :
+    if message.content.startswith("#문의") :
         contents = message.content[4:]
         username = str(message.author)
         user = client.get_user(337849294591885322)
