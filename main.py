@@ -40,7 +40,7 @@ async def on_ready () : # 항상
       activity = discord.Game(name="!문의봇 으로 명령어를 확인하세요")
       await client.change_presence(status=discord.Status.online, activity=activity) # idle = 자리비움
 
-@client.command()
+@client.command(pass_context=True)
 async def 문의봇 (ctx, *args) : 
     if len(args) == 0 :
         await ctx.send ("```css\n[!문의봇 업데이트] : 업데이트 내역을 확인할 수 있습니다.\n[!문의 <문의내용>] : (Only DM) 문의/건의를 보낼 수 있습니다.```")              
