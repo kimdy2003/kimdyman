@@ -44,7 +44,7 @@ contents = ""
 @client.event
 async def on_message(message) :
     spread(message.author.id)
-    if isinstance(message.channel,discord.DMChannel):
+    if isinstance(discord.DMChannel):
         if message.content.startswith("!문의") :
              contents = message.content[4:]
              username = str(message.author)
