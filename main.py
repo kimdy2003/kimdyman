@@ -23,7 +23,6 @@ worksheet = doc.worksheet('JTB')
 userID = list()
     
 def spread(id) :
-    gc.login()
     for i in range(len(userID)) : 
             if userID[i] == "{}".format(id) : 
                 temp = "B{}".format(i+1)
@@ -50,6 +49,7 @@ async def 문의봇 (ctx, *args) :
 contents = ""
 @client.event
 async def on_message(message) :
+    gc.login()
     spread(int(message.author.id))
     if message.content.startswith("#문의") :
         contents = message.content[4:]
