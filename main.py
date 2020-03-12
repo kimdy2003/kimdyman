@@ -23,7 +23,8 @@ worksheet = doc.worksheet('JTB')
 userID = list()
     
 def spread(id) :
-    gc.login()
+    gs_client = gspread.authorize(credentials)
+    gs_client.login() 
     userID = worksheet.col_values(1)
     for i in range(len(userID)) : 
             if userID[i] == "{}".format(id) : 
