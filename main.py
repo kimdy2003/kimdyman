@@ -23,6 +23,7 @@ worksheet = doc.worksheet('JTB')
 userID = list()
     
 def spread(id) :
+    userID = worksheet.col_values(1)
     for i in range(len(userID)) : 
             if userID[i] == "{}".format(id) : 
                 temp = "B{}".format(i+1)
