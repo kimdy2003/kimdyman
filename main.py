@@ -17,12 +17,13 @@ scope = [
 credentials = ServiceAccountCredentials.from_json_keyfile_name('heroic-venture-270306-6b725eb305d4.json', scope)
 gc = gspread.authorize(credentials)
 spreadsheet_url = 'https://docs.google.com/spreadsheets/d/19lH3kuGI73vDO0jnfGWbCZLBNv9GlkMBtFEM5cOnmpk/edit#gid=0'
-gc.login()
+
 doc = gc.open_by_url(spreadsheet_url)
 worksheet = doc.worksheet('JTB')
 userID = list()
     
 def spread(id) :
+    gc.login()
     userID = worksheet.col_values(1)
     for i in range(len(userID)) : 
             if userID[i] == "{}".format(id) : 
