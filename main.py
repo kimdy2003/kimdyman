@@ -13,7 +13,7 @@ scope = [
 'https://www.googleapis.com/auth/drive',
 ]
 
-credentials = ServiceAccountCredentials.from_json_keyfile_name('/users/user/desktop/heroic-venture-270306-6b725eb305d4.json', scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name('heroic-venture-270306-6b725eb305d4.json', scope)
 gc = gspread.authorize(credentials)
 spreadsheet_url = 'https://docs.google.com/spreadsheets/d/19lH3kuGI73vDO0jnfGWbCZLBNv9GlkMBtFEM5cOnmpk/edit#gid=0'
 
