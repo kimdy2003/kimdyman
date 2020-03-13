@@ -68,6 +68,15 @@ async def 문의봇 (ctx, *args) :
         await ctx.send ("```cs\n2020년 3월 11일 업데이트 내역 (0.1)\n#1 '통계도움말 추가'```")
         
 @client.command()
+async def sortedname (ctx) :
+    pin = worksheet.col_values(1)
+    for i in range(len(pin)) :
+        user = client.get_user(int(pin[i]))
+        temp = 'C{}'.format(i+1)
+        worksheet.update_acell (temp, user.name)
+    await ctx.send ("done!")       
+    
+@client.command()
 async def 테스트 (ctx) :
     chuchul()
     for i in range(len(ranking)) :
