@@ -73,7 +73,8 @@ async def sortedname (ctx) :
     for i in range(len(pin)) :
         user = client.get_user(int(pin[i]))
         temp = 'C{}'.format(i+1)
-        worksheet.update_acell (temp, user.name)
+        if user.name != None :
+            worksheet.update_acell (temp, user.name)
     await ctx.send ("done!")       
     
 @client.command()
