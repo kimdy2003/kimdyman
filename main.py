@@ -102,6 +102,12 @@ async def 통계 (ctx, *args) :
         embed.add_field (name = '#3', value = '{0} : {1}회'.format(ranking[2][0], ranking[2][1]), inline = False)
         embed.add_field (name = '#4', value = '{0} : {1}회'.format(ranking[3][0], ranking[3][1]), inline = False)
         embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[4][0], ranking[4][1]), inline = False)
+        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[5][0], ranking[4][1]), inline = False)
+        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[6][0], ranking[5][1]), inline = False)
+        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[7][0], ranking[6][1]), inline = False)
+        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[8][0], ranking[7][1]), inline = False)
+        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[9][0], ranking[8][1]), inline = False)
+        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[10][0], ranking[9][1]), inline = False)
         embed.set_footer(text = 'Kimdy#4847')
         await ctx.send(embed=embed)
 contents = ""
