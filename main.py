@@ -105,14 +105,15 @@ async def 통계 (ctx, *args) :
     if args[0] == '출처' :
         await ctx.send ('자료 출처 : https://docs.google.com/spreadsheets/d/19lH3kuGI73vDO0jnfGWbCZLBNv9GlkMBtFEM5cOnmpk/edit?usp=sharing')
     if args[0] == '채팅' :
-        chuchul()
+        await ctx.send ('공사중...')
+        '''chuchul()
         print(ranking)
         x = '2020년 3월 12일 오전 11시부터 집계, 새벽 2:00~8:00 집계X'
         embed = discord.Embed(description = x, colour = discord.Colour.gold())
         embed.set_author(name = '장터방 채팅 순위(통계)', icon_url = 'https://previews.123rf.com/images/robisklp/robisklp1504/robisklp150400041/38940859-%EA%B3%A8%EB%93%9C-%ED%8A%B8%EB%A1%9C%ED%94%BC.jpg')
         for i in range(len(ranking)) :
           embed.add_field (name = '#{}'.format(i+1), value = '{0} : {1}회'.format(ranking[i][2], ranking[i][1]), inline = False)
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed)'''
 contents = ""
 @client.event
 async def on_message(message) :
