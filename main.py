@@ -37,18 +37,23 @@ ranking = list()
 def chuchul() :
     pin = worksheet.col_values(1)
     score = worksheet.col_values(2)
+    username = worksheet.col_values(4)
     for var in range(len(score)) :
         score[var] = int(score[var])
     sortedscore = sorted(score)
-    for i in range(1, 6) :
+    print(score)
+    print(sortedscore)
+    for i in range(1, 11) :
         i = i * -1
         for m in range(len(score)) :
             if sortedscore[i] == score[m] :
-                ranking.append([pin[m], sortedscore[i]])
+                ranking.append([pin[m], sortedscore[i], username[m]])
+                score[m] = 0
     for i in range(len(ranking)) :
         ranking[i][0] = int(ranking[i][0])
     return ranking
-        
+
+
 # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 @client.event
 async def on_ready () : # 항상
@@ -77,7 +82,7 @@ async def sortedname (ctx) :
             worksheet.update_acell(temp, 'Unknown')
         elif user != None :
             worksheet.update_acell(temp, user.name)
-    await ctx.send ("done!")            
+    await ctx.send ("done!")       
     
 @client.command()
 async def 테스트 (ctx) :
@@ -102,25 +107,12 @@ async def 통계 (ctx, *args) :
         await ctx.send ('자료 출처 : https://docs.google.com/spreadsheets/d/19lH3kuGI73vDO0jnfGWbCZLBNv9GlkMBtFEM5cOnmpk/edit?usp=sharing')
     if args[0] == '채팅' :
         chuchul()
-        for i in range(len(ranking)) :
-            user = client.get_user(ranking[i][0])
-            temp = user.name
-            ranking[i][0] = temp
+        print(ranking)
         x = '2020년 3월 12일 오전 11시부터 집계, 새벽 2:00~8:00 집계X'
         embed = discord.Embed(description = x, colour = discord.Colour.gold())
         embed.set_author(name = '장터방 채팅 순위(통계)', icon_url = 'https://previews.123rf.com/images/robisklp/robisklp1504/robisklp150400041/38940859-%EA%B3%A8%EB%93%9C-%ED%8A%B8%EB%A1%9C%ED%94%BC.jpg')
-        embed.add_field (name = '#1', value = '{0} : {1}회'.format(ranking[0][0], ranking[0][1]), inline = False)
-        embed.add_field (name = '#2', value = '{0} : {1}회'.format(ranking[1][0], ranking[1][1]), inline = False)
-        embed.add_field (name = '#3', value = '{0} : {1}회'.format(ranking[2][0], ranking[2][1]), inline = False)
-        embed.add_field (name = '#4', value = '{0} : {1}회'.format(ranking[3][0], ranking[3][1]), inline = False)
-        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[4][0], ranking[4][1]), inline = False)
-        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[5][0], ranking[4][1]), inline = False)
-        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[6][0], ranking[5][1]), inline = False)
-        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[7][0], ranking[6][1]), inline = False)
-        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[8][0], ranking[7][1]), inline = False)
-        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[9][0], ranking[8][1]), inline = False)
-        embed.add_field (name = '#5', value = '{0} : {1}회'.format(ranking[10][0], ranking[9][1]), inline = False)
-        embed.set_footer(text = 'Kimdy#4847')
+        for i in range(len(ranking)) :
+          embed.add_field (name = '#{}'.format(i+1), value = '{0} : {1}회'.format(ranking[i][2], ranking[i][1]), inline = False)
         await ctx.send(embed=embed)
 contents = ""
 @client.event
