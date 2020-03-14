@@ -81,8 +81,7 @@ async def sortedname (ctx) :
         if user == None :
             worksheet.update_acell(temp, 'Unknown')
         elif user != None :
-            worksheet.update_acell(temp, user.name)
-    await ctx.send ("done!")       
+            worksheet.update_acell(temp, user.name)      
     
 @client.command()
 async def 테스트 (ctx) :
