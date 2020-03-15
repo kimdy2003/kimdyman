@@ -84,13 +84,25 @@ async def sortedname (ctx) :
             worksheet.update_acell(temp, user.name)      
     
 @client.command()
-async def 테스트 (ctx) :
-    chuchul()
-    for i in range(len(ranking)) :
-        user = client.get_user(ranking[i][0])
-        temp = user.name
-        ranking[i][0] = temp
-        print(ranking[i][0])     
+async def 유저정보 (ctx, *args) :
+    if len(args) == 0 and len(args) == 2:
+        await ctx.send ("!유저정보 <이름> or <아이디>로 찾아주세요!")
+    elif len(args[0]) == 18 and args[0].isdecimal() == True :
+        userid = args[0]
+        user = client.get_user(int(userid))
+        for guild in client.guilds :
+            for member in guild.members :
+                if member.name == user.display_name :
+                    date = member.joined_at
+                    status = member.status
+        embed = discord.Embed(colour = discord.Colour.dark_green())
+        embed.set_author(name = '{0}님의 서버 정보'.format(user.name), icon_url = user.avatar_url)
+        embed.add_field(name = '#클라이언트 이름', value = '{}'.format(user.name), inline = True)
+        embed.add_field(name = '#서버 닉네임', value = '{}'.format(user.display_name), inline = True)
+        embed.add_field(name = '#디스코드 태그', value = '#{}'.format(user.discriminator), inline = True)
+        embed.add_field(name = '#현재 상태', value = '{}'.format(status), inline = False)
+        embed.add_field(name = '#서버에 들어온 날짜', value = '{}'.format(date), inline = False)
+        await ctx.send(embed=embed)  
         
 @client.command()
 async def 통계도움말 (ctx) :
