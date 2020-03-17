@@ -83,26 +83,27 @@ async def sortedname (ctx) :
         elif user != None :
             worksheet.update_acell(temp, user.name)      
     
-@client.command()
-async def 유저정보 (ctx, *args) :
-    if len(args) == 0 and len(args) == 2:
-        await ctx.send ("!유저정보 <이름> or <아이디>로 찾아주세요!")
-    elif len(args[0]) == 18 and args[0].isdecimal() == True :
-        userid = args[0]
-        user = client.get_user(int(userid))
-        for guild in client.guilds :
-            for member in guild.members :
-                if member.name == user.display_name :
-                    date = member.joined_at
-                    status = member.status
-        embed = discord.Embed(colour = discord.Colour.dark_green())
-        embed.set_author(name = '{0}님의 서버 정보'.format(user.name), icon_url = user.avatar_url)
-        embed.add_field(name = '#클라이언트 이름', value = '{}'.format(user.name), inline = True)
-        embed.add_field(name = '#서버 닉네임', value = '{}'.format(user.display_name), inline = True)
-        embed.add_field(name = '#디스코드 태그', value = '#{}'.format(user.discriminator), inline = True)
-        embed.add_field(name = '#현재 상태', value = '{}'.format(status), inline = False)
-        embed.add_field(name = '#서버에 들어온 날짜', value = '{}'.format(date), inline = False)
-        await ctx.send(embed=embed)  
+@client.command(aliases =['유저정보'])
+async def userinfo (ctx, *args) :
+    if len(args) > 0 :
+        name = args[0]
+        if len(args) > 1 :
+            for i in range (1, len(args)) :
+                name += " " + args[i]
+        for member in ctx.author.guild.members :
+            if name == member.display_name :
+                if member.bot == False :
+                    user = client.get_user(member.id)
+                        info = discord.Embed(colour = discord.Colour.blue())
+                        info.set_author(name = '**{}님의 서버 정보**'.format(member.name), icon_url = 'https://cdn.iconscout.com/icon/free/png-512/discord-3-569463.png')
+                        info.set_thumbnail (url = user.avatar_url)
+                        info.add_field (name = '서버 이름', value = '**{}**'.format(member.name), inline = True)
+                        info.add_field (name = '클라이언트 이름', value = '**{}**'.format(member.display_name), inline= True)
+                        info.add_field (name = '현재 상태', value = '**{0}, {1}**'.format(inform.statuscheck(member.status), activity.name), inline = True)
+                        info.add_field (name = '{} 아이디'.format('<:id:689428440335777853>'), value = '{}'.format(member.id), inline = True)
+                        info.add_field (name = '{}서버에 들어온 날짜'.format('<:inbox_tray:689057672297054210>'), value = '**{}**'.format(inform.datecheck(member.joined_at)), inline = False)
+                        info.add_field (name = '{}계정을 만든 날짜'.format('<:inbox_tray:689057672297054210>'), value = '**{}**'.format(inform.datecheck(member.created_at)), inline = True)
+                        await ctx.channel.send (embed = info)
         
 @client.command()
 async def 통계도움말 (ctx) :
