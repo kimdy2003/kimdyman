@@ -121,7 +121,7 @@ async def 통계 (ctx, *args) :
     if args[0] == '채팅' :
         result = chatranking()
         info = discord.Embed()
-        info.set_author (name = '장터방 채팅 순위', url = ctx.author.Guild.banner_url)
+        info.set_author (name = '장터방 채팅 순위', url = ctx.author.member.guild.banner_url)
         for i in range(len(result)) :
             info.add_field (name = '#{}'.format(i+1), value = '{}, {}회'.format(result[i][1], result[i][2]), inline = True)
         info.set_footer (text = '`20년 3월 12일부터 집계, 2:00 ~ 8:00 집계 X')
