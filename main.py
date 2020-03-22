@@ -119,15 +119,13 @@ async def 통계 (ctx, *args) :
     if args[0] == '출처' :
         await ctx.send ('자료 출처 : https://docs.google.com/spreadsheets/d/19lH3kuGI73vDO0jnfGWbCZLBNv9GlkMBtFEM5cOnmpk/edit?usp=sharing')
     if args[0] == '채팅' :
-        await ctx.send ('공사중...')
-        '''chuchul()
-        print(ranking)
-        x = '2020년 3월 12일 오전 11시부터 집계, 새벽 2:00~8:00 집계X'
-        embed = discord.Embed(description = x, colour = discord.Colour.gold())
-        embed.set_author(name = '장터방 채팅 순위(통계)', icon_url = 'https://previews.123rf.com/images/robisklp/robisklp1504/robisklp150400041/38940859-%EA%B3%A8%EB%93%9C-%ED%8A%B8%EB%A1%9C%ED%94%BC.jpg')
-        for i in range(len(ranking)) :
-          embed.add_field (name = '#{}'.format(i+1), value = '{0} : {1}회'.format(ranking[i][2], ranking[i][1]), inline = False)
-        await ctx.send(embed=embed)'''
+        result = chatranking()
+        info = discord.Embed()
+        info.set_author (name = '장터방 채팅 순위', url = ctx.author.guild.banner_url)
+        for i in range(len(result)) :
+            info.add_field (name = '#{}'.format(i+1), value = '{}, {}회'.format(result[i][1], result[i][2]), inline = True)
+        info.set_footer (text = '`20년 3월 12일부터 집계, 2:00 ~ 8:00 집계 X')
+        await ctx.channel.send (embed = info)
 contents = ""
 @client.event
 async def on_message(message) :
@@ -142,5 +140,36 @@ async def on_message(message) :
         embed2 = discord.Embed(title = '{}님으로부터의 문의/건의 내용'.format(username), description = '{}'.format(contents))
         await user.send(embed=embed2)
     await client.process_commands(message)
+def chatranking () :
+    worksheet = doc.worksheet('JTB')
+    uid = worksheet.col_values(1)
+    name = worksheet.col_values(4)
+    if len(uid) != len(worksheet.col_values(4)) :
+        checks (uid)
+    score = worksheet.col_values(2)
+    lst = list()
+    for i in range(len(score)) :
+        score[i] = int(score[i])
+    sortedscore = sorted(score)
+    for i in range(1, 10) :
+        temp = sortedscore [-1 * i] 
+        for m in range(len(score)) :
+            if score[m] == temp :
+                lst.append([uid[m], name[m], temp])
+    return lst
+                
+    
+    
+    
 
+
+def checks (pin) :
+    for i in range(len(pin)) :
+        user = client.get_user(int(pin[i]))
+        temp = 'D{}'.format(i+1)
+        if user == None :
+            worksheet.update_acell(temp, 'Unknown')
+        elif user != None :
+            worksheet.update_acell(temp, user.name)
+            
 client.run(token)
