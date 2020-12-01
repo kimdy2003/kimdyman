@@ -1,5 +1,5 @@
 import logging
-from telegram import Update, Bot
+import telegram 
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 import time
 logging.basicConfig(
@@ -8,7 +8,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 api = "1468499223:AAF1-zRu-S_xp1zT0vWwmGHQ6KyemKMf_wk"
-bot = Bot(token = api)
+bot = telegram.Bot(token = api)
 
 def main() : 
     updater = Updater("1468499223:AAF1-zRu-S_xp1zT0vWwmGHQ6KyemKMf_wk", use_context=True)
@@ -18,7 +18,7 @@ def main() :
     updater.start_polling()
     updater.idle()  
 
-def get_message(update : Update, context: CallbackContext) :
+def get_message(update : telegram.Update, context: CallbackContext) :
         global Text 
         Text = update.message.text
         update.message.reply_text(
@@ -26,7 +26,7 @@ def get_message(update : Update, context: CallbackContext) :
             "전달할 메세지 :\n"+Text
         )
 
-def upload(update : Update, context : CallbackContext) :
+def upload(update : telegram.Update, context : CallbackContext) :
     if Text != None :
         bot.send_message(chat_id = '@koreanagora', text= "#AGORA\n\n" + Text)
 
